@@ -12,8 +12,10 @@ func main() {
 
 	producer := NewKafkaProducer()
 
-	Publish("mensagem", "teste", producer, nil, deliveryChan)
+	// Publish("mensagem", "teste", producer, nil, deliveryChan) // como a key é igual a nil a mensagem tende a ir para partições diferentes
+	Publish("mensagem", "teste", producer, []byte("transferencia"), deliveryChan) // ao definir uma key, as mensagens irão sempre para mesma partição
 	go DeliveryReport(deliveryChan) // async
+	producer.Flush(2000)
 	// e := <-deliveryChan
 
 	// msg := e.(*kafka.Message)
