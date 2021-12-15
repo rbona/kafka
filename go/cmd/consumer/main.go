@@ -11,6 +11,7 @@ func main() {
 		"bootstrap.servers": "go_kafka_1:9092",
 		"client.id":         "goapp-consumer",
 		"group.id":          "goapp-group",
+		"auto.offset.reset": "earliest", // quando o consumidor subir serão buscadas as mensagens anteriores
 	}
 
 	c, err := kafka.NewConsumer(configMap)
