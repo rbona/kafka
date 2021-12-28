@@ -1,0 +1,4 @@
+Arquivo docker-compose.yaml
+
+image: wesleywillians/mysql-kafka-connect:latest
+    Essa imagem do mysql tem os logs no formato binário pois o kafka precisa que esteja dessa forma para capturar os dados
